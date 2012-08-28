@@ -14,15 +14,8 @@ and a client in separate processes.
   `mkdir test/itg`.
   Now your directory structure should look like
   ```
-  app
-  config
-  ...
-  test
-      |--fixtures  
-      |--functional  
-      |--integration  
-      |--itg  
-      |--unit
+  $ls test
+  fixtures  functional  integration  itg  test_helper.rb  unit
   ```
 * Write integration tests as you would with Rail's default
   integration test framework. Remember to place them under
