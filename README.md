@@ -12,11 +12,9 @@ and a client in separate processes.
 ## Usage
 * Create a `itg` folder under Rail's default test folder by running
   `mkdir test/itg`.
-  Now your directory structure should look like
-  ```
-  $ls test
-  fixtures  functional  integration  itg  test_helper.rb  unit
-  ```
+  Now your `test` directory structure should look something like
+  `$ls test`
+  `fixtures  functional  integration  itg  test_helper.rb  unit`
 * Write integration tests as you would with Rail's default
   integration test framework. Remember to place them under
   the `itg` folder instead of Rail's default `integration` folder.  
