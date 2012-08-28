@@ -4,29 +4,30 @@ For Rails apps that are too complicated to be tested with the
 builtin integration test, such as apps that spawn threads
 that update the same database table.  
 itg_test overcomes this obstacle by simply starting a server
-and a client in separate process.  
+and a client in separate processes.  
 
 ## Installation
 `gem install itg_test`
 
 ## Usage
-* Create a `itg` folder under Rail's default test folder `mkdir test/itg`.
+* Create a `itg` folder under Rail's default test folder by running
+  `mkdir test/itg`.
   Now your directory structure should look like
   ```
-  app
-  config
-  ...
-  test
-   |--fixtures
-   |--functional
-   |--integration
-   |--itg
+  app  
+  config  
+  ...  
+  test  
+   |--fixtures  
+   |--functional  
+   |--integration  
+   |--itg  
    |--unit
   ```
 * Write integration tests as you would with Rail's default
   integration test framework. Remember to place them under
-  `itg` instead of Rail's default `integration` folder. For example,
-  `test/itg/your_app_test.rb`
+  the `itg` folder instead of Rail's default `integration` folder.  
+  For example, create `test/itg/your_app_test.rb` with the following contents
   ```
   require 'itg_test'
 
@@ -42,12 +43,12 @@ and a client in separate process.
 * itg_test supports the common Rails integration test helpers,
   including `assert_equal`, `assert_difference` and `assert_select` etc.
 * You might find the following script that runs all
-  Rails and itg_test tests handy
+  Rails and itg_test tests in one shot handy
   ```
   desc "all tests"
   task 'test:all' => :environment do
-    Rake::Task['test'].invoke
-    Rake::Task['test:itg'].invoke
+      Rake::Task['test'].invoke
+      Rake::Task['test:itg'].invoke
   end
   ```
 
