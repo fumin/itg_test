@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
     "itg_test.gemspec",
     "README.md"
   ]
-  s.homepage    = 'http://cardinalblue.com'
+  s.homepage    = 'https://github.com/fumin/itg_test'
   s.add_runtime_dependency "nokogiri", [">= 0"]
 end
