@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'itg_test'
-  s.version     = '0.0.0'
+  s.version     = '0.0.1'
   s.date        = '2012-08-29'
   s.summary     = "rails integration test"
   s.description = "for rails apps that are too complicated to be tested with builtin integration test"

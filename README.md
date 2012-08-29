@@ -7,7 +7,7 @@ itg_test overcomes this obstacle by simply starting a server
 and a client in separate processes.  
 
 ## Installation
-`gem install itg_test`
+Add `gem 'itg_test'` in your app's Gemfile, and run `bundle install`
 
 ## Usage
 * Create a `itg` folder under Rail's default test folder by running
