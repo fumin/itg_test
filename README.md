@@ -24,12 +24,12 @@ For example, you have this piece of code in your app
 17     get '/some_method'
 18     assert_response :success
 19     sleep(1) # wait for the thread in MyController to finish
-20     assert SomeModel.find(id).a_column # assertion fails :(
+20     assert SomeModel.find(id).a_column # assertion fails with a false value :(
 21   end
 22 end
 ```
-Your integration test will fail no matter you wait for how long in
-line 19, because the spawned thread can never update the column in line 10,
+Your integration test will fail in line 20 no matter how long you waited for
+in line 19, because the spawned thread can never update the column in line 10,
 due to the way Rails mocks your app in your integration test and Ruby's
 global intepretor lock.  
 itg_test overcomes this obstacle by simply starting a server
