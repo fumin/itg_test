@@ -3,6 +3,35 @@
 For Rails apps that are too complicated to be tested with the
 builtin integration test, such as apps that spawn threads
 that update the same database table.  
+For example, you have this piece of code in your app
+```
+1  class MyController < ApplicationController
+2    def some_method
+3      SomeModel.find(id).update_column :a_column, false
+4      Thread.new{ AnotherModel.do_something }
+5    end
+6  end
+7
+8  class AnotherModel < ActiveRecord::Base
+9    def do_something
+10     SomeModel.find(id).update_column :a_column, true
+11   end
+12 end
+13
+14 # Rails built-in integration test
+15 class MyIntegrationTest < ActionDispatch::IntegrationTest
+16   test '' do
+17     get '/some_method'
+18     assert_response :success
+19     sleep(1) # wait for the thread in MyController to finish
+20     assert SomeModel.find(id).a_column # assertion fails :(
+21   end
+22 end
+```
+Your integration test will fail no matter you wait for how long in
+line 19, because the spawned thread can never update the column in line 10,
+due to the way Rails mocks your app in your integration test and Ruby's
+global intepretor lock.  
 itg_test overcomes this obstacle by simply starting a server
 and a client in separate processes.  
 
