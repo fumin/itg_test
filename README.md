@@ -69,9 +69,7 @@ Add `gem 'itg_test'` in your app's Gemfile, and run `bundle install`
   Rails and itg_test tests in one shot handy
   ```
   desc "all tests"
-  task 'test:all' => :environment do
-      Rake::Task['test'].invoke
-      Rake::Task['test:itg'].invoke
+  task 'test:all' => %w[test test:itg] do
   end
   ```
 
