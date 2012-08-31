@@ -3,7 +3,7 @@
 For Rails apps that are too complicated to be tested with the
 builtin integration test, such as apps that spawn threads
 that update the same database table.  
-For example, you have this piece of code in your app
+For example, we have this piece of code in our app
 ```
 1  class MyController < ApplicationController
 2    def some_method
@@ -28,10 +28,10 @@ For example, you have this piece of code in your app
 21   end
 22 end
 ```
-Your integration test will fail in line 20 no matter how long you waited for
-in line 19, because the spawned thread can never update the column in line 10,
-due to the way Rails mocks your app in your integration test and Ruby's
-global intepretor lock.  
+Our integration test will fail in line 20 no matter how long we waited for
+in line 19, because the spawned thread can never update the column in line 10.
+The reason is because Rails essentially allows only one thread to access the database
+at a time when running integration tests.
 itg_test overcomes this obstacle by simply starting a server
 and a client in separate processes.  
 
